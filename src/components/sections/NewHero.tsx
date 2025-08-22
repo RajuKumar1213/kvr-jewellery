@@ -273,7 +273,7 @@ const NewHero = () => {
         </video>
       </div>
 
-      <div id="particles" className="absolute inset-0 z-1 bg-rose-900/10" />
+      <div id="particles" className="absolute inset-0 z-1 bg-blue-900/30" />
 
       {/* Audio element for tick sound */}
       <audio ref={audioRef} preload="auto" className="hidden">
