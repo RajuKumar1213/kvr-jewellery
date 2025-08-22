@@ -6,7 +6,7 @@ const WeddingJewelry = () => {
     {
       name: "Gold",
       image:
-        "https://images.unsplash.com/photo-1515562141207-7a88fb7ad5e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://d25g9z9s77rn4i.cloudfront.net/uploads/product/194/1737539642_bdac2baf411a5259c0b3.jpg",
       description: "Elegant gold jewelry for your special day",
     },
     {
@@ -18,7 +18,7 @@ const WeddingJewelry = () => {
     {
       name: "Dailywear",
       image:
-        "https://images.unsplash.com/photo-1596944946762-53fabc0e7a60?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "https://www.soosi.co.in/cdn/shop/products/WhatsApp_Image_2019-11-21_at_17.43.12_580x.jpg?v=1574601194",
       description: "Beautiful pieces for everyday elegance",
     },
   ];
@@ -51,7 +51,7 @@ const WeddingJewelry = () => {
               key={index}
               className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
             >
-              <div className="h-80 overflow-hidden">
+              <div className="h-96 overflow-hidden">
                 <img
                   src={category.image}
                   alt={category.name}

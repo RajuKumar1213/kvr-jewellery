@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Sparkle } from "lucide-react";
 import Button from "./ui/Button";
 import Image from "next/image";
+import { FaUserAlt } from "react-icons/fa";
+import { FiUser } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -111,7 +113,13 @@ const Navbar = () => {
                 </div>
               </button>
 
-              <Button>Login</Button>
+              <Button className="text-[15px]">
+                {" "}
+                <span className="mr-1 flex items-center">
+                  <FiUser className="h-5 w-5 text-white font-bold" />
+                </span>
+                Login
+              </Button>
 
               {/* Mobile menu button */}
               <button
