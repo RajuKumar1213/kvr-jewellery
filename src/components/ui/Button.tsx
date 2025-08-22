@@ -15,11 +15,11 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    "flex items-center justify-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105";
+    "flex items-center text-white justify-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105";
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-yellow-500 to-yellow-700 text-black hover:shadow-lg",
+      "bg-gradient-to-r from-rose-800 to-rose-900 text-black hover:shadow-lg",
     secondary: "bg-gray-800 text-white hover:bg-gray-700 hover:shadow-md",
   };
 

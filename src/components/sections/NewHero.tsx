@@ -229,7 +229,7 @@ const NewHero = () => {
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement("div");
       particle.className =
-        "absolute rounded-full bg-yellow-400/20 pointer-events-none";
+        "absolute rounded-full bg-rose-400/20 pointer-events-none";
 
       const size = Math.random() * 4 + 1;
       const posX = Math.random() * 100;
@@ -273,8 +273,7 @@ const NewHero = () => {
         </video>
       </div>
 
-      {/* Particles */}
-      <div id="particles" className="absolute inset-0 z-1 bg-blue-800/20" />
+      <div id="particles" className="absolute inset-0 z-1 bg-rose-900/10" />
 
       {/* Audio element for tick sound */}
       <audio ref={audioRef} preload="auto" className="hidden">
@@ -359,11 +358,11 @@ const NewHero = () => {
                         <p className="text-xs text-gray-300 mb-3">
                           {item.description}
                         </p> */}
-                        <div className="flex items-center justify-center gap-1 text-xl md:text-2xl font-bold text-yellow-400 mb-4">
+                        <div className="flex items-center justify-center gap-1 text-xl md:text-2xl font-bold text-white/80 mb-4">
                           <span>₹</span>
                           <span>{item.price.toLocaleString("en-IN")}</span>
                         </div>
-                        {/* <button className="w-full px-6 py-2 bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-700 hover:to-yellow-600 text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95">
+                        {/* <button className="w-full px-6 py-2 bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-700 hover:to-rose-600 text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95">
                           Buy Now
                         </button> */}
                       </div>
@@ -382,7 +381,7 @@ const NewHero = () => {
           } top-1/2 -translate-y-1/2 
             bg-black/20 hover:bg-black/40 backdrop-blur-sm border border-white/20
             ${isMobile ? "w-10 h-10" : "w-12 h-12"} rounded-full 
-            flex justify-center items-center text-yellow-400 z-20 
+            flex justify-center items-center text-rose-700 z-20 
             transition-all duration-300 hover:scale-110 active:scale-95`}
           onClick={prevItem}
         >
@@ -395,7 +394,7 @@ const NewHero = () => {
           } top-1/2 -translate-y-1/2 
             bg-black/20 hover:bg-black/40 backdrop-blur-sm border border-white/20
             ${isMobile ? "w-10 h-10" : "w-12 h-12"} rounded-full 
-            flex justify-center items-center text-yellow-400 z-20 
+            flex justify-center items-center text-rose-700 z-20 
             transition-all duration-300 hover:scale-110 active:scale-95`}
           onClick={nextItem}
         >
@@ -404,15 +403,15 @@ const NewHero = () => {
       </div>
 
       {/* Navigation Dots */}
-      <div className="flex justify-center mt-8 z-20 gap-2 flex-wrap px-4">
+      <div className="flex justify-center mt-2 z-20 gap-3 flex-wrap px-4">
         {jewelryItems.map((_, index) => (
           <button
             key={index}
             className={`${
-              isMobile ? "w-2 h-2" : "w-3 h-3"
-            } rounded-full transition-all duration-300 ${
+              isMobile ? "w-2 h-2" : "w-2 h-2"
+            } rounded-nine rotate-45 transition-all duration-300 ${
               index === currentIndex
-                ? "bg-yellow-400 scale-125 shadow-lg shadow-yellow-400/50"
+                ? "bg-rose-700 scale-125 shadow-lg shadow-rose-400/50"
                 : "bg-white/30 hover:bg-white/50"
             }`}
             onClick={() => {

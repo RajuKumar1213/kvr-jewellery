@@ -8,7 +8,7 @@ interface ContainerProps {
 function Container({ children, className = "" }: ContainerProps) {
   return (
     <div
-      className={`container mx-auto px-2 md:px-8 py-8 md:py-10 ${className}`}
+      className={`container mx-auto px-2 md:px-8 py-8 md:py-8 ${className}`}
     >
       {children}
     </div>
