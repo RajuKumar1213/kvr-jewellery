@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {  Menu, X, Sparkle } from "lucide-react";
+import { Menu, X, Sparkle } from "lucide-react";
 import Button from "./ui/Button";
 import Image from "next/image";
 
@@ -21,6 +21,15 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Prevent body scrolling when sidebar is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -119,33 +128,71 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Overlay */}
         <div
-          className={`lg:hidden bg-black/95 backdrop-blur-lg transition-all duration-500 overflow-hidden ${
-            isOpen ? "max-h-96 py-4" : "max-h-0 py-0"
+          className={`lg:hidden fixed inset-0 bg-black/60 z-40 transition-opacity duration-500 ${
+            isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => setIsOpen(false)}
+        />
+
+        {/* Mobile Sidebar */}
+        <div
+          className={`lg:hidden fixed top-0 left-0 h-full w-70 max-w-[85vw] bg-black/50 rounded-r-2xl backdrop-blur-lg z-50 transition-transform duration-500 ease-in-out ${
+            isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <div className="container mx-auto px-4">
-            <nav className="flex flex-col space-y-3">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 ${
-                    pathname === item.href
-                      ? "bg-yellow-400/10 text-yellow-400"
-                      : "text-gray-300 hover:bg-white/5 hover:text-white"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <button className="flex items-center justify-center space-x-2 bg-gradient-to-r from-yellow-500 to-yellow-700 px-4 py-3 rounded-lg text-base font-medium text-black mt-2">
-                <Sparkle className="w-5 h-5" />
-                <span>Book Appointment</span>
+          <div className="flex flex-col h-full">
+            {/* Sidebar header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-800">
+              <Link
+                href="/"
+                className="flex items-center space-x-2"
+                onClick={() => setIsOpen(false)}
+              >
+                <Image
+                  src="/logo.png"
+                  alt="KVR Jewelry Logo"
+                  width={40}
+                  height={40}
+                  className="h-12 w-12 rounded-full"
+                />
+                <span className="text-xl font-semibold text-white">
+                  KVR Jewelry
+                </span>
+              </Link>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 rounded-full hover:bg-white/10 transition-colors"
+              >
+                <X className="h-6 w-6 text-yellow-400" />
               </button>
+            </div>
+
+            {/* Navigation items */}
+            <nav className="flex-1 p-4 overflow-y-auto">
+              <div className="flex flex-col space-y-3">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`text-lg font-medium py-2 px-4 rounded-xl transition-all duration-300 ${
+                      pathname === item.href
+                        ? "bg-gray-400/20 text-yellow-400 border-l-4 border-gray-400"
+                        : "text-gray-300 hover:bg-white/5 hover:text-white"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
             </nav>
+
+            {/* Sidebar footer */}
+            <div className="p-6 border-t border-gray-800">
+              <Button className="w-full">Login</Button>
+            </div>
           </div>
         </div>
       </header>
